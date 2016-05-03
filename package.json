@@ -1,0 +1,52 @@
+{
+  "name": "sematext-agent-nginx",
+  "version": "1.29.0",
+  "description": "SPM Agent for monitoring Nginx",
+  "main": "lib/index.js",
+  "bin": {
+    "sematext-agent-nginx": "lib/index.js",
+    "sematext-nginx-setup": "bin/sematext-nginx-setup",
+    "sematext-client-diagnostics": "./bin/sematext-client-diagnostics.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sematext/sematext-agent-nginx.git"
+  },
+  "keywords": [
+    "SPM",
+    "APM",
+    "application performance monitoring",
+    "Sematext",
+    "performance monitoring",
+    "monitoring",
+    "alerting",
+    "anomaly detection",
+    "heartbeat",
+    "metrics",
+    "custom metrics",
+    "devops",
+    "operations",
+    "dashboards",
+    "profiling",
+    "mongodb",
+    "agent",
+    "nginx"
+  ],
+  "author": "Sematext Group, Inc.",
+  "license": "Copyright (c) Sematext Group, Inc.",
+  "bugs": {
+    "url": "https://github.com/sematext/sematext-agent-nginx/issues"
+  },
+  "homepage": "http://www.sematext.com",
+  "dependencies": {
+    "flat": "^1.6.0",
+    "measured": "^1.0.2",
+    "mongodb": "^2.0.46",
+    "node-df": "^0.1.1",
+    "procfs-stats": "0.0.4",
+    "request": "^2.72.0",
+    "spm-agent": "^1.28.0",
+    "which": "^1.2.0",
+    "zip-zip-top": "^0.1.1"
+  }
+}
