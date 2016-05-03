@@ -2,15 +2,15 @@
 DESCRIPTION="SPM for Nginx"
 PLATFORM=$(uname)
 SERVICE_NAME="sematext-agent-nginx"
+UPSTART_SERVICE_FILE=/etc/init/${SERVICE_NAME}.conf
 LAUNCHCTL_SERVICE_FILE="/Library/LaunchDaemons/com.sematext.sematext-agent-nginx.plist"
 SYSTEMD_SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
+SPM_AGENT_CONFIG_FILE=/etc/sematext/${SERVICE_NAME}.config
 e=$'\e'
 COLORblue="$e[0;36m"
 COLORred="$e[0;31m"
 COLORreset="$e[0m"
 
-SPM_AGENT_CONFIG_FILE=/etc/sematext/${SERVICE_NAME}.config
-mkdir -p $(dirname $SPM_AGENT_CONFIG_FILE)
 function generate_upstart()
 {
 echo -e "description ${DESCRIPTION}
@@ -18,7 +18,7 @@ start on runlevel [2345]
 stop on runlevel [06]
 respawn
 chdir  /tmp
-exec $1 " > /etc/init/${SERVICE_NAME}.conf
+exec $1 " > $UPSTART_SERVICE_FILE
 runCommand "initctl reload-configuration"
 stop $SERVICE_NAME 2> /dev/null
 runCommand "start ${SERVICE_NAME}"
@@ -104,6 +104,7 @@ runCommand "tail -n 10 /Library/Logs/sematext-agent-nginx.log" 4
 function install_script ()
 {
 	
+    mkdir -p $(dirname $SPM_AGENT_CONFIG_FILE)
 	echo $2 $3
 printf '{
 	"tokens": {
