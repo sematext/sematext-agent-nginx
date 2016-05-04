@@ -13,7 +13,7 @@ COLORreset="$e[0m"
 
 function generate_upstart()
 {
-echo -e "description ${DESCRIPTION}
+echo -e "description \"${DESCRIPTION}\"
 start on runlevel [2345]
 stop on runlevel [06]
 respawn
