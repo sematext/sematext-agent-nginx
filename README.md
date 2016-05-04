@@ -34,9 +34,9 @@ sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status
 ```
 # Configuration 
 
-The setup script will store your configuration in /etc/sematext/sematext-agent-nginx.config 
+The setup script will store your configuration in ```/etc/sematext/sematext-agent-nginx.config```
 
-In case you like to change settings later edit /etc/sematext/sematext-agent-nginx.config  
+In case you like to change settings later edit ```/etc/sematext/sematext-agent-nginx.config```  
 Then restart the Sematext Nginx Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
