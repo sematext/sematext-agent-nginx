@@ -13,7 +13,7 @@ This is the NGINX monitoring Agent for [SPM Performance Monitoring](http://semat
 
 3. [Install Node.js](https://nodejs.org/en/download/package-manager/) on your Nginx server
 
-4. Activate stats interface in the ```server``` section in your Nginx config e.g. in ```/etc/nginx/sites-enabled/default```: 
+4. Activate Nginx ```stub_status``` module in the ```server``` section e.g. in ```/etc/nginx/sites-enabled/default```: 
 ```
 location /nginx_status {
   # Turn on nginx stats
