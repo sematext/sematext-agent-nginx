@@ -79,8 +79,11 @@ The Sematext Nginx Agent supports following parameters on Docker:
 | NGINX_STATS_URL      | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. |
 | HTTPS_PROXY          | Url to HTTPS proxy if the agent runs behind a firewall |
 
+Example:
 ```
-docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  -e NGINX_STATS_URL=http://nginx-server/nginx_status  -d  sematext/sematext-agent-nginx
+docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \ 
+-e NGINX_STATS_URL=http://nginx-server/nginx_status \ 
+-d  sematext/sematext-agent-nginx
 ```
 
 # Support 
