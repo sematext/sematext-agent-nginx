@@ -72,6 +72,7 @@ docker build -t sematext/sematext-agent-nginx .
 ```
 
 The Sematext Nginx Agent supports following parameters on Docker: 
+
 | Environment Variable | Description |
 |----------------------|-------------|
 | SPM_TOKEN            | your SPM Token for the Nginx SPM App |
