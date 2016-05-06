@@ -28,7 +28,6 @@
     "operations",
     "dashboards",
     "profiling",
-    "mongodb",
     "agent",
     "nginx"
   ],
