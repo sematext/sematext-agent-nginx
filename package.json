@@ -39,13 +39,12 @@
   },
   "homepage": "http://www.sematext.com",
   "dependencies": {
-    "flat": "^2.0.0",
     "measured": "^1.1.0",
     "node-df": "^0.1.1",
     "procfs-stats": "1.0.1",
     "request": "^2.72.0",
-    "spm-agent": "^1.28.0",
-    "which": "^1.2.0",
+    "spm-agent": "^1.29.10",
+    "which": "^1.2.8",
     "zip-zip-top": "^0.2.0"
   }
 }
