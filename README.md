@@ -75,9 +75,14 @@ The Sematext Nginx Agent supports following parameters on Docker:
 
 | Environment Variable | Description |
 |----------------------|-------------|
-| SPM_TOKEN            | your SPM Token for the Nginx SPM App |
-| NGINX_STATS_URL      | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. |
-| HTTPS_PROXY          | Url to HTTPS proxy if the agent runs behind a firewall |
+| **Required parameters**  |         |
+| SPM_TOKEN                | your SPM Token for the Nginx SPM App |
+| NGINX_STATS_URL          | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. |
+| Optional parameters      | |
+| HTTPS_PROXY              | Url to HTTPS proxy if the agent runs behind a firewall |
+| SPM_RECEIVER_URL         | Optional for SPM On-Premises, default value: https://spm-receiver.sematext.com:443/receiver/v1/_bulk |
+| EVENTS_RECEIVER_URL      | Optional for SPM On-Premises, default value: https://event-receiver.sematext.com |
+
 
 Example:
 ```
