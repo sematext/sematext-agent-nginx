@@ -62,6 +62,24 @@ sematext-agent-nginx --config /etc/sematext/sematext-agent-nginx.config
 
 TODO
 
+# Docker 
+
+Sematext Agent for Nginx includes a docker file and startup script to build a Docker image. 
+```
+git clone https://github.com/sematext/sematext-agent-nginx.git
+cd sematext-agent-nginx
+docker build -t sematext/sematext-agent-nginx .
+```
+
+The ```docker run``` command requires two parameters: 
+- SPM_TOKEN - your SPM Token for the Nginx SPM App
+- NGINX_STATS_URL - the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. 
+- HTTPS_PROXY - Url to HTTPS proxy if the agent runs behind a firewall
+
+```
+docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  -e NGINX_STATS_URL=http://nginx-server/nginx_status  -d  sematext/sematext-agent-nginx
+```
+
 # Support 
 
 - Twitter: [@sematext](http://www.twitter.com/sematext)
