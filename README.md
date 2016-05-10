@@ -1,7 +1,5 @@
 [![bitHound Overalll Score](https://www.bithound.io/github/sematext/sematext-agent-nginx/badges/score.svg)](https://www.bithound.io/github/sematext/sematext-agent-nginx) [![Build Status](https://travis-ci.org/sematext/sematext-agent-nginx.svg?branch=master)](https://travis-ci.org/sematext/sematext-agent-nginx)
 
-# WORK IN PROGRESS ...
-
 This is the NGINX monitoring Agent for [SPM Performance Monitoring](http://sematext.com/spm/)
 
 
