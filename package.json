@@ -6,7 +6,7 @@
   "bin": {
     "sematext-agent-nginx": "lib/index.js",
     "sematext-nginx-setup": "bin/sematext-nginx-setup",
-    "sematext-client-diagnostics": "./bin/sematext-client-diagnostics.js"
+    "spm-nginx-diagnostics": "./bin/spm-nginx-diagnostics.js"
   },
   "repository": {
     "type": "git",
