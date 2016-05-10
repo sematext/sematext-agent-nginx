@@ -137,7 +137,8 @@ echo "Create config file: $SPM_AGENT_CONFIG_FILE"
 		return 
 	fi
 }
-command="$(which $SERVICE_NAME) --config /etc/sematext/${SERVICE_NAME}.config"
+
+command="$(which $SERVICE_NAME) --config ${SPM_AGENT_CONFIG_FILE}"
 echo $command
 if [[ -n "$1" && -n "$2" ]] ; then 
   token=$1
