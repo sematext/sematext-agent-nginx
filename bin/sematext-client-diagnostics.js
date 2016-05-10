@@ -24,12 +24,16 @@ var systemInfo = {
 
 //var cfgDumpFileName = path.join (os.tmpdir(), 'spm-cfg-dump.txt')
 //fs.writeFileSync(cfgDumpFileName, util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
-zip.file('systemInfo',
+zip.file('systemInfo.txt',
 	     util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo));
-zip.folder(config.logger.dir)
+zip.zipFolder(config.logger.dir, function (err, data) {
+	zip.zipFolder('/etc/sematext', function (err,data) {
+	  var archFileName = path.join(os.tmpdir(), 'spm-diagnose.zip')
+	  zip.writeToFile(archFileName)
+	  console.log('Sematext diagnostics info is in  ' + archFileName)
+	  console.log('Please e-mail the file to spm-support@sematext.com')
+	// fs.unlink(cfgDumpFileName, function () {})
+})
+})
 
-var archFileName = path.join(os.tmpdir(), 'spm-diagnose.zip')
-zip.writeToFile(archFileName)
-console.log('Sematext diagnostics info is in  ' + archFileName)
-console.log('Please e-mail the file to spm-support@sematext.com')
-//fs.unlink(cfgDumpFileName, function () {})
+
