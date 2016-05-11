@@ -57,7 +57,8 @@ sematext-agent-nginx --config /etc/sematext/sematext-agent-nginx.config
 
 # Results
 
-TODO
+NGINX Metrics in SPM: 
+![](https://raw.githubusercontent.com/sematext/sematext-agent-nginx/master/nginx-report-screenshot.png)
 
 # Docker 
 
