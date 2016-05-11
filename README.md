@@ -32,10 +32,9 @@ sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status
 ```
 # Configuration 
 
-The setup script will store your configuration in ```/etc/sematext/sematext-agent-nginx.config```
+The setup script stores the configuration in ```/etc/sematext/sematext-agent-nginx.config```
 
-In case you like to change settings later edit ```/etc/sematext/sematext-agent-nginx.config```  
-Then restart the Sematext Nginx Agent after config changes, depending on the init system:
+In case you want to change settings later edit ```/etc/sematext/sematext-agent-nginx.config```. Restart the Sematext Nginx Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
     sudo service sematext-agent-nginx restart 
@@ -75,7 +74,7 @@ The Sematext Nginx Agent supports following parameters on Docker:
 |----------------------|-------------|
 | **Required parameters**  |         |
 | SPM_TOKEN                | your SPM Token for the Nginx SPM App |
-| NGINX_STATS_URL          | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. |
+| NGINX_STATUS_URL          | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. |
 | Optional parameters      | |
 | HTTPS_PROXY              | Url to HTTPS proxy if the agent runs behind a firewall |
 | SPM_RECEIVER_URL         | Optional for SPM On-Premises, default value: https://spm-receiver.sematext.com:443/receiver/v1/_bulk |
@@ -85,7 +84,7 @@ The Sematext Nginx Agent supports following parameters on Docker:
 Example:
 ```
 docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \ 
--e NGINX_STATS_URL=http://nginx-server/nginx_status \ 
+-e NGINX_STATUS_URL=http://nginx-server/nginx_status \ 
 -d  sematext/sematext-agent-nginx
 ```
 
