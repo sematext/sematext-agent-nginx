@@ -26,7 +26,7 @@ location /nginx_status {
 # Setup 
 ```sh
 # Install sematext-agent-nginx 
-npm i sematext/sematext-agent-nginx -g
+npm i sematext-agent-nginx -g
 # Install systemd or upstart service file for sematext-agent-nginx 
 sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status
 ```
