@@ -1,6 +1,6 @@
 {
   "name": "sematext-agent-nginx",
-  "version": "1.29.2",
+  "version": "1.30.0",
   "description": "SPM Agent for monitoring Nginx",
   "main": "lib/index.js",
   "bin": {
