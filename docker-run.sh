@@ -10,7 +10,7 @@ printf '{
 	"nginx": {
 		"url": "%s"
 	},
-	"spmSenderBulkInsertUrl": "%s",
+	"spmSenderBulkInsertUrl": "%s"
 }' ${SPM_TOKEN} ${NGINX_STATUS_URL} ${SPM_RECEIVER_URL} > $SPM_AGENT_CONFIG_FILE
  
 sematext-agent-nginx --config /etc/sematext/sematext-agent-nginx.config 
