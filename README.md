@@ -75,12 +75,13 @@ The Sematext Nginx Agent supports following parameters on Docker:
 |----------------------|-------------|
 | **Required parameters**  |         |
 | SPM_TOKEN                | your SPM Token for the Nginx SPM App |
-| NGINX_STATUS_URL          | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. |
-|Docker Autodiscovery| Detects new nginx containers for monitoring |
+| NGINX_STATUS_URL          | the URL to Nginx server, delivering the stats (see Nginx configuration above). Please note the servername/ip must be reachable from the agent container. You might need to use --link nginx-container-name to create the network link. Not required with DOCKER_AUTO_DISCOVERY.|
+|**Docker Autodiscovery** | Detect new nginx containers for monitoring! |
 | DOCKER_AUTO_DISCOVERY | Enable auto discovery of containers with "nginx" in the image name |
 | SPM_DOCKER_NETWORK | Name of the network to be used for HTTP queries to nginx. If this is set to "host" and docker run parameter ```--net=host`` the connection is made to the exposed ports. If this is not set or any other network name  (e.g. bridge) the connection is done via nginx container IP address and 'internal' port 80 (used inside the nginx container). This feature works only when the Docker socket is mounted with ```-v /var/run/docker.sock:/var/run/docker.sock```| 
 | NGINX_STATUS_PATH  | Location of the nginx status page e.g. "/nginx_status" |
-| Optional parameters      | |
+| IMAGE_NAME_PATTERN | Regular expression to match nginx image name. Default  value 'nginx'|
+| **General parameters ** | |
 | HTTPS_PROXY              | Url to HTTPS proxy if the agent runs behind a firewall |
 | SPM_RECEIVER_URL         | Optional for SPM On-Premises, default value: https://spm-receiver.sematext.com:443/receiver/v1/_bulk |
 | EVENTS_RECEIVER_URL      | Optional for SPM On-Premises, default value: https://event-receiver.sematext.com |
@@ -95,7 +96,7 @@ docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \
 
 Example with auto discovery of nginx containers via Docker API: 
 ```
-docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE -e NGINX_STATUS_URL=empty -e NGINX_STATUS_PATH=/nginx_Status -d  -e SPM_LOG_LEVEL=info -e SPM_LOG_TO_CONSOLE=true -e DOCKER_AUTO_DISCOVERY=true --net=host -e SPM_DOCKER_NETWORK=host -v /var/run/docker.sock:/var/run/docker.sock sematext/sematext-agent-nginx
+docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE -e NGINX_STATUS_PATH=/nginx_Status -e DOCKER_AUTO_DISCOVERY=true --net=host -e SPM_DOCKER_NETWORK=host -v /var/run/docker.sock:/var/run/docker.sock -d sematext/sematext-agent-nginx
 ```
 
 
