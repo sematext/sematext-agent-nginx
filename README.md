@@ -89,6 +89,12 @@ docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \
 -d  sematext/sematext-agent-nginx
 ```
 
+Example with auto deiscovery of nginx containers: 
+```
+docker run --name sematext-agent-nginx -e SPM_TOKEN=1YOUR_SPM_NGINX_TOKEN_HERE -e NGINX_STATUS_URL=empty -d  -e SPM_LOG_LEVEL=info -e SPM_LOG_TO_CONSOLE=true -e DOCKER_AUTO_DISCOVERY=true --net=host -e SPM_DOCKER_NETWORK=host -v /var/run/docker.sock:/var/run/docker.sock sematext/sematext-agent-nginx
+```
+
+
 # Support 
 
 - Twitter: [@sematext](http://www.twitter.com/sematext)

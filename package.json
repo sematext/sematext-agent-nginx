@@ -1,9 +1,10 @@
 {
   "name": "sematext-agent-nginx",
-  "version": "1.30.1",
+  "version": "1.30.2",
   "description": "SPM Agent for monitoring Nginx",
   "main": "lib/index.js",
   "bin": {
+    "docker-info": "bin/docker-info.js",
     "sematext-agent-nginx": "lib/index.js",
     "sematext-nginx-setup": "bin/sematext-nginx-setup",
     "spm-nginx-diagnostics": "./bin/spm-nginx-diagnostics.js"
@@ -38,6 +39,8 @@
   },
   "homepage": "http://www.sematext.com",
   "dependencies": {
+    "docker-events": "0.0.2",
+    "dockerode": "^2.2.10",
     "measured": "^1.1.0",
     "request": "^2.72.0",
     "spm-agent": "^1.29.10",
