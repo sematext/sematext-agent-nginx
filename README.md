@@ -81,7 +81,7 @@ The Sematext Nginx Agent supports following parameters on Docker:
 | SPM_DOCKER_NETWORK | Name of the network to be used for HTTP queries to nginx. If this is set to "host" and docker run parameter ```--net=host``` the connection is made to the exposed ports. If this is not set or any other network name  (e.g. bridge) the connection is done via nginx container IP address and 'internal' port 80 (used inside the nginx container). This feature works only when the Docker socket is mounted with ```-v /var/run/docker.sock:/var/run/docker.sock```| 
 | NGINX_STATUS_PATH  | Location of the nginx status page e.g. "/nginx_status" |
 | IMAGE_NAME_PATTERN | Regular expression to match nginx image name. Default  value 'nginx'|
-| **General parameters ** | |
+| **General parameters** | |
 | HTTPS_PROXY              | Url to HTTPS proxy if the agent runs behind a firewall |
 | SPM_RECEIVER_URL         | Optional for SPM On-Premises, default value: https://spm-receiver.sematext.com:443/receiver/v1/_bulk |
 | EVENTS_RECEIVER_URL      | Optional for SPM On-Premises, default value: https://event-receiver.sematext.com |
