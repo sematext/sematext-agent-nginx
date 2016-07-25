@@ -11,7 +11,8 @@
   },
   "scripts": {
     "standard": "standard 'lib/*.js'",
-    "standard-format": "standard-format -w lib/*.js"
+    "standard-format": "standard-format -w lib/*.js",
+    "docker-build" :"docker build -t sematext/sematext-agent-nginx ."
   },
   "repository": {
     "type": "git",
