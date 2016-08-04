@@ -48,7 +48,7 @@
     "docker-allcontainers": "^0.5.0",
     "measured": "^1.1.0",
     "request": "^2.72.0",
-    "spm-agent": "^1.29.10",
+    "spm-agent": "^1.30.4",
     "spm-agent-os": "^1.30.0",
     "which": "^1.2.8",
     "zip-zip-top": "^0.2.0"
