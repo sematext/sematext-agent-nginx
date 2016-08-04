@@ -4,7 +4,7 @@ export SPM_RECEIVER_URL=${SPM_RECEIVER_URL:-https://spm-receiver.sematext.com:44
 export EVENTS_RECEIVER_URL=${EVENTS_RECEIVER_URL:-https://event-receiver.sematext.com}
 export NGINX_STATUS_URL=${NGINX_STATUS_URL:-empty}
 export SPM_LOG_TO_CONSOLE=${SPM_LOG_TO_CONSOLE:-true}
-export SPM_LOG_LEVEL=${SPM_LOG_LEVEL:-info}
+export SPM_LOG_LEVEL=${SPM_LOG_LEVEL:-error}
 export DOCKER_AUTO_DISCOVERY=${DOCKER_AUTO_DISCOVERY:-'true'}
 
 mkdir -p $(dirname $SPM_AGENT_CONFIG_FILE)
