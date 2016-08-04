@@ -1,6 +1,6 @@
 {
   "name": "sematext-agent-nginx",
-  "version": "1.30.3",
+  "version": "1.30.4",
   "description": "SPM Agent for monitoring Nginx",
   "main": "lib/index.js",
   "bin": {
@@ -12,7 +12,7 @@
   "scripts": {
     "standard": "standard 'lib/*.js'",
     "standard-format": "standard-format -w lib/*.js",
-    "docker-build" :"docker build -t sematext/sematext-agent-nginx .",
+    "docker-build": "docker build -t sematext/sematext-agent-nginx .",
     "docker-push": "docker push sematext/sematext-agent-nginx"
   },
   "repository": {
