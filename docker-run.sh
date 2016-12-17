@@ -6,6 +6,7 @@ export NGINX_STATUS_URL=${NGINX_STATUS_URL:-empty}
 export SPM_LOG_TO_CONSOLE=${SPM_LOG_TO_CONSOLE:-true}
 export SPM_LOG_LEVEL=${SPM_LOG_LEVEL:-info}
 export DOCKER_AUTO_DISCOVERY=${DOCKER_AUTO_DISCOVERY:-'true'}
+export PHP_FPM_URL=${PHP_FPM_URL:-'undefined'}
 
 mkdir -p $(dirname $SPM_AGENT_CONFIG_FILE)
 printf '{
@@ -15,8 +16,11 @@ printf '{
 	"nginx": {
 		"url": "%s"
 	},
+	"phpFpm": {
+		"url": "%s"
+	},
 	"spmSenderBulkInsertUrl": "%s"
-}' ${SPM_TOKEN} ${NGINX_STATUS_URL} ${SPM_RECEIVER_URL} > $SPM_AGENT_CONFIG_FILE
+}' ${SPM_TOKEN} ${NGINX_STATUS_URL} ${PHP_FPM_URL} ${SPM_RECEIVER_URL} > $SPM_AGENT_CONFIG_FILE
  
 export SPM_REPORTED_HOSTNAME=$(docker-info Name)
 echo "Docker Hostname: ${SPM_REPORTED_HOSTNAME}"
