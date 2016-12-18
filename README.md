@@ -80,6 +80,7 @@ The Sematext Nginx Agent supports following parameters on Docker:
 | DOCKER_AUTO_DISCOVERY | Enable auto discovery of containers e.g. DOCKER_AUTO_DISCOVERY=true |
 | SPM_DOCKER_NETWORK | Name of the network to be used for HTTP queries to nginx. If this is set to "host" and docker run parameter ```--net=host``` the connection is made to the exposed ports. If this is not set or any other network name  (e.g. bridge) the connection is done via nginx container IP address and 'internal' port 80 (used inside the nginx container). This feature works only when the Docker socket is mounted with ```-v /var/run/docker.sock:/var/run/docker.sock```| 
 | NGINX_STATUS_PATH  | Location of the nginx status page e.g. "/nginx_status" |
+| PHP_FPM_STATUS_PATH | Location of the PHP FPM status page e.g. "/status" |
 | IMAGE_NAME_PATTERN | Regular expression to match nginx image name. Default  value 'nginx'|
 | **General parameters** | |
 | HTTPS_PROXY              | Url to HTTPS proxy if the agent runs behind a firewall |
