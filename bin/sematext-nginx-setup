@@ -10,6 +10,13 @@ e=$'\e'
 COLORblue="$e[0;36m"
 COLORred="$e[0;31m"
 COLORreset="$e[0m"
+PHP_FPM_URL="undefined"
+
+if [[ -n "$3" ]]; then
+	PHP_FPM_URL="$3"
+	echo "PHP_FPM_URL: $PHP_FPM_URL"
+fi
+
 
 function generate_upstart()
 {
@@ -105,15 +112,18 @@ function install_script ()
 {
 	
     mkdir -p $(dirname $SPM_AGENT_CONFIG_FILE)
-	echo $2 $3
+	echo $2 $3 $4
 printf '{
 	"tokens": {
 		"spm": "%s"
 	},
 	"nginx": {
 		"url": "%s"
+	},
+	"phpFpm": {
+		"url": "%s"
 	}
-}' $2 $3 > $SPM_AGENT_CONFIG_FILE
+}' $2 $3 $PHP_FPM_URL > $SPM_AGENT_CONFIG_FILE
 runCommand "chown root $SPM_AGENT_CONFIG_FILE"
 runCommand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
 
