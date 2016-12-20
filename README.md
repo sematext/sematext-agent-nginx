@@ -23,7 +23,7 @@ location /nginx_status {
 }
 ```
 
-4.1 Optional preparation to collect PHP FPM metrics: 
+5. Optional: preparation for PHP FPM monitorin: 
 
 For PHP FPM monitoring activate PHP FPM status page in your php-fpm config (e.g. in /etc/php5/php-fpm.conf):
 ```
