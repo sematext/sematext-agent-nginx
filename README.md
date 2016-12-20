@@ -25,25 +25,7 @@ location /nginx_status {
 
 5. Optional preparation for PHP FPM monitoring
 
-For PHP FPM monitoring activate PHP FPM status page in your php-fpm config (e.g. in /etc/php5/php-fpm.conf):
-```
-pm.status_path = /status
-```
-
-To expose the PHP-FPM status page via nginx e.g. in ```/etc/nginx/sites-enabled/default```:
-
-```
-location ~ ^/(status|ping)$ {
-       # access_log off;
-       allow all;
-       # allow SPM-MONITOR-IP;
-       # deny all;
-       fastcgi_pass unix:/var/run/php-fpm.sock;
-       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-       fastcgi_param SCRIPT_NAME $fastcgi_script_name;
-       include fastcgi_params;
-}
-```
+To add monitoring for PHP FastCGI Process Manager (FPM) follow [this instructions](https://github.com/sematext/sematext-agent-nginx/blob/master/php-fpm.md).
 
 # Setup 
 ```sh
@@ -51,11 +33,6 @@ location ~ ^/(status|ping)$ {
 npm i sematext-agent-nginx -g
 # Install systemd or upstart service file for sematext-agent-nginx 
 sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status
-```
-
-For PHP-FPM add the PHP-FPM status URL to the setup command:
-```
-sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status http://localhost/status
 ```
 
 # Configuration 
