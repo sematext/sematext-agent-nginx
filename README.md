@@ -100,7 +100,12 @@ docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \
 
 Example with auto discovery of nginx containers via Docker API: 
 ```
-docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE -e NGINX_STATUS_PATH=/nginx_Status -e DOCKER_AUTO_DISCOVERY=true --net=host -e SPM_DOCKER_NETWORK=host -v /var/run/docker.sock:/var/run/docker.sock -d sematext/sematext-agent-nginx
+docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE \
+-e NGINX_STATUS_PATH=/nginx_Status \
+-e DOCKER_AUTO_DISCOVERY=true \
+--net=host -e SPM_DOCKER_NETWORK=host \
+-v /var/run/docker.sock:/var/run/docker.sock -d \
+sematext/sematext-agent-nginx
 ```
 
 
