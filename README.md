@@ -23,9 +23,7 @@ location /nginx_status {
 }
 ```
 
-5. Optional preparation for PHP FPM monitoring
-
-To add monitoring for PHP FastCGI Process Manager (FPM) follow [this instructions](https://github.com/sematext/sematext-agent-nginx/blob/master/php-fpm.md).
+__Optional preparation for PHP FastCGI Process Manager (FPM):___ To add monitoring for PHP-FPM follow [this instructions](https://github.com/sematext/sematext-agent-nginx/blob/master/php-fpm.md).
 
 # Setup 
 ```sh
