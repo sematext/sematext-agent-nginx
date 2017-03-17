@@ -3,8 +3,26 @@
 For [PHP-FPM](http://php.net/manual/en/install.fpm.php) status monitoring activate PHP-FPM status page in your php-fpm config by removing the leading semicolon in the ```;pm.status_path = /status``` entry:
 
 ```
-sed -i -e "s/^;pm.status_path/pm.status_path/" /etc/php5/php-fpm.conf
+sed -i -e "s/^;pm.status_path/pm.status_path/" /etc/php-fpm.conf
 ```
+
+Or edit the file `/etc/php-fpm.conf` manually and add the line
+
+```
+pm.status_path = /status
+``` 
+
+Restart php-fpm e.g. for upstart
+```
+service php-fpm restart 
+```
+
+or for systemd
+```
+systemctl restart php-fpm.service
+```
+
+Make sure that Node.js > 4.x is installed: [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
 
 # Setup Nginx Agent
 
