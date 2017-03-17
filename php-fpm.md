@@ -3,10 +3,10 @@
 For [PHP-FPM](http://php.net/manual/en/install.fpm.php) status monitoring activate PHP-FPM status page in your php-fpm config by removing the leading semicolon in the ```;pm.status_path = /status``` entry:
 
 ```
-sed -i -e "s/^;pm.status_path/pm.status_path/" /etc/php-fpm.conf
+sudo sed -i -e "s/^;pm.status_path/pm.status_path/" /etc/php-fpm.d/www.conf
 ```
 
-Or edit the file `/etc/php-fpm.conf` manually and add the line
+Or edit the file ` /etc/php-fpm.d/www.conf` manually and add the line
 
 ```
 pm.status_path = /status
@@ -14,24 +14,25 @@ pm.status_path = /status
 
 Restart php-fpm e.g. for upstart
 ```
-service php-fpm restart 
+sudo service php-fpm restart 
 ```
 
 or for systemd
 ```
-systemctl restart php-fpm.service
+sudo systemctl restart php-fpm.service
 ```
 
 Make sure that Node.js > 4.x is installed: [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
 
-# Setup Nginx Agent
-
+Install sematext-agent-httpd via npm (Node package manage)
 ```sh
-# Install sematext-agent-nginx (assuming nodejs is already installed)
-npm i sematext-agent-nginx -g
+# Install sematext-agent-httpd (assuming nodejs is already installed)
+sudo npm i sematext-agent-httpd -g
 ```
 
-Then run the service setup for the PHP-FPM monitoring agent. Pass the SPM Token, Nginx status URL, and the PHP-FPM status URL to the setup command:
+# Setup Nginx Agent with php-fpm unix socket (recommended)
+
+Run the service setup for the PHP-FPM monitoring agent. Pass the SPM Token, Nginx status URL, and the PHP-FPM status URL to the setup command:
 ```
 sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status http://unix:/var/run/php-fpm.sock:/status
 ```
