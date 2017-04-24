@@ -37,7 +37,19 @@ sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status
 
 The setup script stores the configuration in ```/etc/sematext/sematext-agent-nginx.config```
 
-In case you want to change settings later edit ```/etc/sematext/sematext-agent-nginx.config```. Restart the Sematext Nginx Agent after config changes, depending on the init system:
+In case you want to change settings later edit ```/etc/sematext/sematext-agent-nginx.config```. 
+A typical case is to add receiver URL for On-Premises installation of SPM in the config file:
+
+```
+# default value for SaaS / Sematext Cloud: https://spm-receiver.sematext.com:443/receiver/v1/_bulk
+spmSenderBulkInsertUrl: http://your-spm-server:8084/_bulk
+# default value for SaaS / Sematext Cloud: https://event-receiver.sematext.com
+eventsReceiverUrl:  http://your-spm-server:8083
+```
+
+
+
+Restart the Sematext Nginx Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
     sudo service sematext-agent-nginx restart 
