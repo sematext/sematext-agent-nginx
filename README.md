@@ -93,8 +93,6 @@ The Sematext Nginx Agent supports following parameters on Docker:
 
 Example:
 ```
-git clone https://github.com/sematext/sematext-agent-nginx.git
-docker build -t sematext-agent-nginx .
 docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \ 
 -e NGINX_STATUS_URL=http://nginx-server/nginx_status \ 
 -d  sematext/sematext-agent-nginx
