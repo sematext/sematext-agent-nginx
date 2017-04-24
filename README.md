@@ -87,12 +87,14 @@ The Sematext Nginx Agent supports following parameters on Docker:
 | IMAGE_NAME_PATTERN | Regular expression to match nginx image name. Default  value 'nginx'|
 | **General parameters** | |
 | HTTPS_PROXY              | Url to HTTPS proxy if the agent runs behind a firewall |
-| SPM_RECEIVER_URL         | Optional for SPM On-Premises, default value: https://spm-receiver.sematext.com:443/receiver/v1/_bulk |
-| EVENTS_RECEIVER_URL      | Optional for SPM On-Premises, default value: https://event-receiver.sematext.com |
+| SPM_RECEIVER_URL         | Optional for SPM On-Premises, default value: https://spm-receiver.sematext.com:443/receiver/v1/_bulk for On-Premises receiver use http://your-spm-server:8084|_bulk.  
+| EVENTS_RECEIVER_URL      | Optional for SPM On-Premises, default value: https://event-receiver.sematext.com. For On-Premises use http://your-spm-server:8083|
 
 
 Example:
 ```
+git clone https://github.com/sematext/sematext-agent-nginx.git
+docker build -t sematext-agent-nginx .
 docker run --name sematext-agent-nginx -e SPM_TOKEN=YOUR_SPM_NGINX_TOKEN_HERE  \ 
 -e NGINX_STATUS_URL=http://nginx-server/nginx_status \ 
 -d  sematext/sematext-agent-nginx
