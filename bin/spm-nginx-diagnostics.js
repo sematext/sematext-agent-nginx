@@ -31,7 +31,7 @@ zip.zipFolder(config.logger.dir, function (err, data) {
 	  var archFileName = path.join(os.tmpdir(), 'spm-diagnose.zip')
 	  zip.writeToFile(archFileName)
 	  console.log('Sematext diagnostics info is in  ' + archFileName)
-	  console.log('Please e-mail the file to spm-support@sematext.com')
+	  console.log('Please e-mail the file to support@sematext.com')
 	// fs.unlink(cfgDumpFileName, function () {})
 })
 })
