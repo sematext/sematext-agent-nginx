@@ -11,12 +11,57 @@ COLORblue="$e[0;36m"
 COLORred="$e[0;31m"
 COLORreset="$e[0m"
 PHP_FPM_URL="undefined"
+export SPM_TOKEN=$1
+export NGINX_URL=$2
 
-if [[ -n "$3" ]]; then
-	PHP_FPM_URL="$3"
-	echo "PHP_FPM_URL: $PHP_FPM_URL"
-fi
+function generate_eu_config()
+{
+echo -e "SPM_RECEIVER_URL=https://spm-receiver.eu.sematext.com/receiver/v1
+EVENTS_RECEIVER_URL=https://event-receiver.eu.sematext.com
+LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > /etc/sematext/receivers.config
+}
 
+function generate_us_config()
+{
+echo -e "SPM_RECEIVER_URL=https://spm-receiver.sematext.com/receiver/v1
+EVENTS_RECEIVER_URL=https://event-receiver.sematext.com
+LOGSENE_RECEIVER_URL=https://logsene-receiver.sematext.com" > /etc/sematext/receivers.config
+}
+
+while getopts ":t:n:p:r:" opt; do
+  case $opt in
+    t)
+      export SPM_TOKEN=$OPTARG
+      ;;
+    r)
+      export REGION=$OPTARG
+      mkdir /etc/sematext 2> /dev/null
+      if [ "$REGION" == "EU" ]; then 
+      		generate_eu_config
+      		echo "Set region $OPTARG in /etc/sematext/receivers.config:"
+      		cat /etc/sematext/receivers.config
+      		exit 0
+      fi;
+      if [ "$REGION" == "US" ]; then 
+      		generate_us_config
+      		echo "Set region $OPTARG in /etc/sematext/receivers.config:"
+      		cat /etc/sematext/receivers.config
+      		exit 0
+      fi;
+      echo "Invalid region $OPTARG"
+      exit 1
+      ;;
+    p)
+      export PHP_FPM_URL=$OPTARG
+      ;;
+    n)
+      export NGINX_URL=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
 
 function generate_upstart()
 {
@@ -147,18 +192,16 @@ echo "Create config file: $SPM_AGENT_CONFIG_FILE"
 
 command="$(which $SERVICE_NAME) --config ${SPM_AGENT_CONFIG_FILE}"
 echo $command
-if [[ -n "$1" && -n "$2" ]] ; then 
-  token=$1
-  nginx_url=$2
-  install_script "$command" $token $nginx_url;
+if [[ -n "$SPM_TOKEN" && -n "$NGINX_URL" ]] ; then 
+  install_script "$command" $SPM_TOKEN $NGINX_URL;
 else 
 	echo "${COLORred}Missing paramaters. Usage:"
 	echo `basename $0` "SPM_TOKEN NGINX_URL (http://user:password@localhost:80/nginx_status)"
 	echo "Please obtain your application token from https://apps.sematext.com/$COLORreset"
 	read -p "${COLORblue}SPM Token: $COLORreset" token
-	token=${token:-none}
+	SPM_TOKEN=${token:-none}
 	echo "Token" $token
 	read -p "${COLORblue}Nginx URL (http://localhost:80/nginx_status):$COLORreset" nginx_url
-	nginx_url=${nginx_url:-http://localhost:80/nginx_status}
-    install_script $command $token $nginx_url;
+	nginx_url=${NGINX_URL:-http://localhost:80/nginx_status}
+    install_script $command $SPM_TOKEN $NGINX_URL;
 fi 

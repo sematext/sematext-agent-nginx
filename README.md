@@ -29,8 +29,10 @@ __Optional preparation for PHP FastCGI Process Manager (FPM):__ To add monitorin
 ```sh
 # Install sematext-agent-nginx 
 npm i sematext-agent-nginx -g
+# If you use Sematext Cloud EU, set region for API endpoints
+# sematext-nginx-setup -r EU
 # Install systemd or upstart service file for sematext-agent-nginx 
-sematext-nginx-setup YOUR_SPM_TOKEN_HERE http://localhost/nginx_status
+sematext-nginx-setup -t YOUR_SPM_TOKEN_HERE -n http://localhost/nginx_status
 ```
 
 # Configuration 
