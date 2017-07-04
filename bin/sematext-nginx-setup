@@ -202,6 +202,6 @@ else
 	SPM_TOKEN=${token:-none}
 	echo "Token" $token
 	read -p "${COLORblue}Nginx URL (http://localhost:80/nginx_status):$COLORreset" nginx_url
-	nginx_url=${NGINX_URL:-http://localhost:80/nginx_status}
+	NGINX_URL=${NGINX_URL:-http://localhost:80/nginx_status}
     install_script $command $SPM_TOKEN $NGINX_URL;
 fi 
