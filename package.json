@@ -11,7 +11,7 @@
   },
   "scripts": {
     "standard": "standard 'lib/*.js'",
-    "standard-format": "standard-format -w lib/*.js",
+    "standard-format": "standard -fix -w lib/*.js",
     "docker-build": "docker build -t sematext/sematext-agent-nginx .",
     "docker-push": "docker push sematext/sematext-agent-nginx"
   },
@@ -46,7 +46,7 @@
   "homepage": "http://www.sematext.com",
   "dependencies": {
     "docker-allcontainers": "^0.6.1",
-    "measured": "^1.1.0",
+    "measured-core": "^1.40.1",
     "request": "^2.79.0",
     "spm-agent": "^1.31.3",
     "spm-agent-os": "^1.30.10",
@@ -54,7 +54,6 @@
     "zip-zip-top": "^0.2.0"
   },
   "devDependencies": {
-    "standard": "^8.6.0",
-    "standard-format": "^2.2.4"
+    "standard": "^12.0.1"
   }
 }
