@@ -1,13 +1,13 @@
 [![Build Status](https://travis-ci.org/sematext/sematext-agent-nginx.svg?branch=master)](https://travis-ci.org/sematext/sematext-agent-nginx)
 
-This is the NGINX monitoring Agent for [SPM Performance Monitoring](http://sematext.com/spm/)
+This is the NGINX monitoring Agent for [Sematext Cloud](https://sematext.com/cloud/)
 
 
 # Preparation 
 
-1. Get a free account at [sematext.com/spm](https://apps.sematext.com/users-web/register.do)  
+1. Get a free [Sematext account](https://apps.sematext.com/ui/registation)  
 
-2. [Create an SPM App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "Nginx" and copy the SPM Application Token - or execute the commands displayed in the Sematext UI (which are described here as well)
+2. [Create a Monitoring App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "Nginx" and copy the SPM App Token - or execute the commands displayed in the Sematext UI (which are described here as well)
 
 3. [Install Node.js](https://nodejs.org/en/download/package-manager/) on your Nginx server
 
@@ -23,7 +23,7 @@ location /nginx_status {
 }
 ```
 
-__Optional preparation for PHP FastCGI Process Manager (FPM):__ To add monitoring for PHP-FPM follow [this instructions](https://github.com/sematext/sematext-agent-nginx/blob/master/php-fpm.md).
+__Optional preparation for PHP FastCGI Process Manager (FPM):__ To add monitoring for PHP-FPM follow [these instructions](https://sematext.com/docs/integration/php/#integration-with-nginx).
 
 # Setup 
 ```sh
@@ -50,7 +50,6 @@ eventsReceiverUrl:  http://your-spm-server:8083
 ```
 
 
-
 Restart the Sematext Nginx Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
@@ -74,7 +73,7 @@ sematext-agent-nginx --config /etc/sematext/sematext-agent-nginx.config
 
 # Results
 
-NGINX Metrics in SPM: 
+NGINX Metrics in Sematext: 
 ![](https://raw.githubusercontent.com/sematext/sematext-agent-nginx/master/nginx-report-screenshot.png)
 
 # Docker 
@@ -126,7 +125,6 @@ sematext/sematext-agent-nginx
 
 # Support 
 
-- Twitter: [@sematext](http://www.twitter.com/sematext)
-- Blog: [blog.sematext.com](http://blog.sematext.com)
-- Homepage: [www.sematext.com](http://www.sematext.com)
-
+- Twitter: [@sematext](https://www.twitter.com/sematext)
+- Blog: [blog.sematext.com](https://blog.sematext.com)
+- Homepage: [www.sematext.com](https://www.sematext.com)
