@@ -2,3 +2,7 @@ node_modules
 spmdb
 spmlogs
 docs
+
+# npm config
+.npmrc
+.npmignore
