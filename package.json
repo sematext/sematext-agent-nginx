@@ -51,8 +51,8 @@
     "measured-core": "^1.51.1",
     "request": "^2.88.0",
     "spm-agent": "^2.0.3",
-    "which": "^2.0.2"
     "spm-agent-os": "^1.30.16",
+    "which": "^2.0.2"
   },
   "devDependencies": {
     "standard": "^14.3.1"
