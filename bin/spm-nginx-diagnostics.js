@@ -9,10 +9,11 @@
  * Please see the full license (found in LICENSE in this distribution) for details on its license and the licenses of its dependencies.
  */
 var fs = require('fs')
-var ZipZipTop = require('zip-zip-top')
-var zip = new ZipZipTop()
+var AdmZip = require('adm-zip')
+var zip = new AdmZip()
 var config = require('spm-agent').Config
 var util = require('util')
+var ls = require('ls')
 var os = require('os')
 var path = require('path')
 
@@ -53,22 +54,17 @@ var envFileName = '/etc/sematext/receivers.config'
 **/
 loadEnvFromFile(envFileName)
 
-// var cfgDumpFileName = path.join (os.tmpdir(), 'spm-cfg-dump.txt')
-// fs.writeFileSync(cfgDumpFileName, util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
-zip.file('systemInfo.txt',
-  util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
-zip.zipFolder(config.logger.dir, function (err, data) {
-  if (err) {
-    return console.log(err)
-  }
-  zip.zipFolder('/etc/sematext', function (err, data) {
-    if (err) {
-      return console.log(err)
-    }
-    var archFileName = path.join(os.tmpdir(), 'spm-diagnose.zip')
-    zip.writeToFile(archFileName)
-    console.log('Sematext diagnostics info is in  ' + archFileName)
-    console.log('Please e-mail the file to support@sematext.com')
-  // fs.unlink(cfgDumpFileName, function () {})
-  })
+var cfgDumpFileName = path.join(os.tmpdir(), 'sematext-agent-nginx-diagnostics.json')
+fs.writeFileSync(cfgDumpFileName, util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
+var logfiles = ls(config.logger.dir + '/*')
+zip.addLocalFile(cfgDumpFileName)
+
+logfiles.forEach(function (f) {
+  zip.addLocalFile(f.full)
 })
+
+var archFileName = path.join(os.tmpdir(), 'sematext-agent-nginx-diagnostics.zip')
+zip.writeZip(archFileName)
+console.log('Sematext Agent Nginx diagnostics info is in:  ' + archFileName)
+console.log('Please e-mail the file to support@sematext.com')
+fs.unlink(cfgDumpFileName, function () {})

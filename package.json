@@ -45,13 +45,14 @@
   },
   "homepage": "http://www.sematext.com",
   "dependencies": {
+    "adm-zip": "^0.4.14",
     "docker-allcontainers": "^0.8.0",
+    "ls": "^0.2.1",
     "measured-core": "^1.51.1",
     "request": "^2.88.0",
     "spm-agent": "^2.0.3",
+    "which": "^2.0.2"
     "spm-agent-os": "^1.30.16",
-    "which": "^2.0.2",
-    "zip-zip-top": "^0.2.0"
   },
   "devDependencies": {
     "standard": "^14.3.1"
