@@ -13,7 +13,8 @@
     "standard": "standard 'lib/*.js'",
     "standard-format": "standard -fix -w lib/*.js",
     "docker-build": "docker build -t sematext/sematext-agent-nginx .",
-    "docker-push": "docker push sematext/sematext-agent-nginx"
+    "docker-push": "docker push sematext/sematext-agent-nginx",
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,23 @@
     "which": "^2.0.2"
   },
   "devDependencies": {
+    "auto-changelog": "^1.16.2",
+    "babel-eslint": "^10.0.3",
+    "release-it": "^13.5.8",
     "standard": "^14.3.1"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "tokenRef": "RELEASE_IT_GITHUB_TOKEN",
+      "releaseNotes": "npx auto-changelog --stdout --commit-limit false -u --template ./changelog.hbs",
+      "____comment": "\"assets\": [\"dist/agent-*\"]"
+    },
+    "hooks": {
+      "after:bump": "npx auto-changelog -p"
+    }
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
