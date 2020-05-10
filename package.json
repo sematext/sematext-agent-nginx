@@ -14,7 +14,8 @@
     "standard-format": "standard -fix -w lib/*.js",
     "docker-build": "docker build -t sematext/sematext-agent-nginx .",
     "docker-push": "docker push sematext/sematext-agent-nginx",
-    "release": "release-it"
+    "release": "release-it",
+    "build": "ncc build -m ./lib/index.js && nexe -i ./dist/index.js -o ./bin/sematext-agent-nginx && rm -r ./dist"
   },
   "repository": {
     "type": "git",
