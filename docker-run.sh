@@ -21,7 +21,7 @@ printf '{
 	},
 	"spmSenderBulkInsertUrl": "%s"
 }' ${SPM_TOKEN} ${NGINX_STATUS_URL} ${PHP_FPM_URL} ${SPM_RECEIVER_URL} > $SPM_AGENT_CONFIG_FILE
- 
+
 export SPM_REPORTED_HOSTNAME=$(docker-info Name)
 echo "Docker Hostname: ${SPM_REPORTED_HOSTNAME}"
-sematext-agent-nginx --config /etc/sematext/sematext-agent-nginx.config 
+sematext-agent-nginx --config $SPM_AGENT_CONFIG_FILE
